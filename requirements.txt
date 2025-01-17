@@ -1,2 +1,3 @@
 streamlit==1.41.1
 spacy==3.6.1
+en-core-web-sm==3.0.0
