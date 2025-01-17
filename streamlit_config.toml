@@ -1,0 +1,2 @@
+[server]
+entryPoint = "smart_text_highlighter.py"
