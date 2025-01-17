@@ -1,13 +1,10 @@
-import os
-import subprocess
-import sys
+from setuptools import setup
 
-def install_spacy_model():
-    try:
-        subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
-    except subprocess.CalledProcessError as e:
-        print(f"Error installing SpaCy model: {e}")
-        sys.exit(1)
-
-if __name__ == "__main__":
-    install_spacy_model()
+setup(
+    name="Smart-Chunk-Categorizer",
+    version="0.1",
+    install_requires=[
+        'streamlit==1.41.1',
+        'spacy==3.6.1',
+    ],
+)
