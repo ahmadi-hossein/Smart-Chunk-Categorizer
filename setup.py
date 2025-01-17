@@ -6,5 +6,6 @@ setup(
     install_requires=[
         'streamlit==1.41.1',
         'spacy==3.6.1',
+        'thinc==8.0.17',
     ],
 )
