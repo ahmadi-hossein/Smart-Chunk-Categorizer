@@ -1,16 +1,12 @@
-import os
 import streamlit as st
 import spacy
 
-# Install SpaCy model if not already installed
-try:
-    spacy.load("en_core_web_sm")
-except:
-    os.system("python -m spacy download en_core_web_sm")
-    st.warning("SpaCy model 'en_core_web_sm' was missing and has been installed. Please reload the app.")
-
 # Load SpaCy model
-nlp = spacy.load("en_core_web_sm")
+try:
+    nlp = spacy.load("en_core_web_sm")
+except Exception as e:
+    st.error(f"Error loading SpaCy model: {str(e)}")
+    st.stop()
 
 # Function to categorize and chunk the sentence into meaningful groups
 def categorize_chunks(text):
@@ -32,7 +28,7 @@ def categorize_chunks(text):
             # Add standalone tokens like verbs or adverbs if they're significant
             if token.pos_ in {"VERB", "ADV"}:
                 chunks.append(token.text)
-        
+    
     # Add the last chunk if there's any remaining
     if current_chunk:
         chunks.append(" ".join(current_chunk))
